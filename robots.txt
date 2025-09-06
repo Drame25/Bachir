@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://drame25.github.io/Bachir/sitemap.xml
