@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Portfolio – Bachir Dramé</title>
+  <meta name="description" content="Portfolio de Bachir Dramé, communicant créatif et stratège digital">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Portfolio – Bachir Dramé">
+  <meta property="og:description" content="Découvrez mes compétences, projets et ma vision créative.">
+  <meta property="og:image" content="hero.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tonsite.example.com">
+
+  <style>
+    :root {
+      --blue: #1e3a8a;
+      --blue-light: #3b82f6;
+      --pastel: #f3f4f6;
+      --white: #ffffff;
+      --gray: #4b5563;
+      --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --radius: 0.75rem;
+      --gap: 1.5rem;
+      scroll-behavior: smooth;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0; font-family:system-ui, sans-serif; background:var(--pastel); color:var(--gray);}
+    a{text-decoration:none; color:inherit; transition:0.3s;}
+    header{position:sticky; top:0; background:var(--white); box-shadow:0 2px 5px rgba(0,0,0,0.1); z-index:50;}
+    nav{max-width:1100px; margin:auto; padding:1rem; display:flex; justify-content:space-between; align-items:center;}
+    nav h1{font-size:1.6rem; color:var(--blue);}
+    nav a{margin-left:1rem; font-weight:600; color:var(--gray);}
+    nav a:hover{color:var(--blue-light);}
+
+    section{padding:4rem 1rem;}
+    .hero{display:grid; grid-template-columns:1fr; gap:var(--gap); max-width:1100px; margin:auto; align-items:center;}
+    .hero h1{font-size:2.8rem; color:var(--blue); animation:fadeInUp 1s ease forwards;}
+    .hero p{font-size:1.125rem; margin-bottom:1.5rem; animation:fadeInUp 1.2s ease forwards;}
+    .btn{display:inline-block; padding:0.75rem 1.5rem; border-radius:var(--radius); font-weight:700; transition:0.3s;}
+    .btn-primary{background:var(--blue); color:var(--white);}
+    .btn-primary:hover{background:var(--blue-light); transform:translateY(-2px);}
+    .btn-outline{border:2px solid var(--blue); color:var(--blue); background:transparent;}
+    .btn-outline:hover{background:var(--blue); color:var(--white);}
+    .hero img{max-width:360px; border-radius:var(--radius); box-shadow:var(--card-shadow); animation:fadeIn 1.5s ease forwards;}
+
+    .section-title{font-size:2rem; color:var(--blue); margin-bottom:1.25rem; text-align:center;}
+
+    .skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:var(--gap); margin-top:2rem;}
+    .skill-card{background:var(--white); padding:1rem; border-radius:var(--radius); text-align:center; box-shadow:var(--card-shadow); transition:0.3s;}
+    .skill-card:hover{transform:translateY(-4px); box-shadow:0 6px 18px rgba(0,0,0,0.12);}
+    .skill-card h3{margin:0; color:var(--blue-light);}
+
+    .works-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:var(--gap); margin-top:2rem;}
+    .work-card{background:var(--white); padding:1rem; border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; transition:0.3s;}
+    .work-card:hover{transform:translateY(-4px); box-shadow:0 6px 18px rgba(0,0,0,0.12);}
+    .work-card img{width:100%; border-radius:0.5rem; margin-bottom:0.75rem; transition:0.3s;}
+    .work-card:hover img{transform:scale(1.05);}
+
+    .contact{background:var(--white); max-width:800px; margin:auto; border-radius:var(--radius); padding:2rem; box-shadow:var(--card-shadow); text-align:center;}
+    .contact form{display:grid; gap:1rem; margin-top:1.5rem;}
+    .contact input, .contact textarea{padding:0.75rem; border:1px solid var(--gray); border-radius:var(--radius);}
+    .contact button{background:var(--blue); color:var(--white); border:none; padding:0.75rem; border-radius:var(--radius); transition:0.3s;}
+    .contact button:hover{background:var(--blue-light);}
+
+    footer{background:var(--blue); color:var(--white); text-align:center; padding:1.25rem; font-size:0.9rem; margin-top:2rem;}
+
+    @media(min-width:768px){ .hero{grid-template-columns:1fr 1fr;} }
+
+    @keyframes fadeInUp {from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
+    @keyframes fadeIn {from{opacity:0;}to{opacity:1;} }
+  </style>
+</head>
+<body>
+  <header><nav><h1>Bachir Dramé</h1><div><a href="#about">À propos</a><a href="#skills">Compétences</a><a href="#works">Projets</a><a href="#contact">Contact</a></div></nav></header>
+
+  <section class="hero">
+    <div>
+      <h1>Communicant créatif, <br> stratège digital & storyteller</h1>
+      <p>Je conçois des stratégies de communication impactantes, alliant narration, design et innovation digitale.</p>
+      <a href="#works" class="btn btn-primary">Voir mes projets</a>
+      <a href="#contact" class="btn btn-outline">Me contacter</a>
+    </div>
+    <div><img src="hero.jpg" alt="Portrait de Bachir Dramé"></div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">À propos de moi</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">Étudiant en communication, passionné par la création visuelle et les stratégies digitales, je transforme les idées en projets concrets et impactants.</p>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Compétences clés</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><h3>Stratégie & relations presse</h3></div>
+      <div class="skill-card"><h3>Infographie & design visuel</h3></div>
+      <div class="skill-card"><h3>Production audiovisuelle</h3></div>
+      <div class="skill-card"><h3>Communication digitale</h3></div>
+      <div class="skill-card"><h3>Gestion de campagnes</h3></div>
+      <div class="skill-card"><h3>Rédaction & storytelling</h3></div>
+    </div>
+  </section>
+
+  <section id="works">
+    <h2 class="section-title">Mes réalisations</h2>
+    <div class="works-grid">
+      <div class="work-card"><img src="work1.jpg" alt="Projet 1"><h3>Projet 1</h3><p>Objectifs, actions et résultats du projet 1.</p></div>
+      <div class="work-card"><img src="work2.jpg" alt="Projet 2"><h3>Projet 2</h3><p>Détails du projet 2, ses enjeux et son impact.</p></div>
+      <div class="work-card"><img src="work3.jpg" alt="Projet 3"><h3>Projet 3</h3><p>Résumé du projet 3 et ses résultats mesurables.</p></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contactez-moi</h2>
+    <form action="mailto:bachir@example.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Votre nom" required>
+      <input type="email" name="email" placeholder="Votre email" required>
+      <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+    <p style="margin-top:1.5rem;"><a href="cv.pdf" download>Télécharger mon CV</a> · <a href="https://linkedin.com" target="_blank">LinkedIn</a></p>
+  </section>
+
+  <footer>© <script>document.write(new Date().getFullYear())</script> Bachir Dramé – Portfolio.</footer>
+</body>
+</html>
