@@ -36,13 +36,14 @@
 }
 
 * { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: system-ui, sans-serif; background: var(--pastel); color: var(--gray); scroll-behavior: smooth; text-align:justify; }
+body { font-family: system-ui, sans-serif; background: var(--pastel); color: var(--gray); scroll-behavior: smooth; text-align:justify; line-height: 1.6; }
 a { text-decoration:none; color:inherit; transition:0.3s; }
 
 /* Header & Navigation */
 header { position: sticky; top:0; background: var(--white); box-shadow:0 2px 5px rgba(0,0,0,0.1); z-index:50; }
 nav { max-width: 1100px; margin:auto; padding:1rem; display:flex; justify-content:space-between; align-items:center; }
 .nav-logo h1 { font-size:1.5rem; font-weight:bold; color: var(--blue); }
+.nav-links { display: flex; }
 .nav-links a { margin-left:1rem; font-weight:600; color: var(--gray); position: relative; padding-bottom:3px; }
 .nav-links a::after {
   content:""; position:absolute; left:0; bottom:0; width:0%; height:2px; background: var(--blue); transition:0.3s;
@@ -50,53 +51,105 @@ nav { max-width: 1100px; margin:auto; padding:1rem; display:flex; justify-conten
 .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
 .nav-links a:hover { color: var(--blue-light); }
 
+/* Mobile menu */
+.menu-toggle { display: none; flex-direction: column; justify-content: space-around; width: 2rem; height: 2rem; background: transparent; border: none; cursor: pointer; padding: 0; }
+.menu-toggle span { width: 2rem; height: 0.25rem; background: var(--blue); border-radius: 10px; transition: all 0.3s linear; position: relative; transform-origin: 1px; }
+
 /* Hero */
 .hero { display:grid; grid-template-columns:1fr; gap: var(--gap); max-width:1100px; margin:auto; align-items:center; padding:3rem 1rem; }
-.hero-text h1 { font-size:2.8rem; color: var(--blue); margin-bottom:1rem; }
+.hero-text h1 { font-size:2.2rem; color: var(--blue); margin-bottom:1rem; line-height: 1.2; }
 .hero-text p { font-size:1.125rem; margin-bottom:1.5rem; }
-.hero-buttons .btn { margin-right:1rem; }
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
 
 /* Buttons */
-.btn { display:inline-block; padding:0.75rem 1.5rem; border-radius:var(--radius); font-weight:700; transition:0.3s; }
+.btn { display:inline-block; padding:0.75rem 1.5rem; border-radius:var(--radius); font-weight:700; transition:0.3s; text-align: center; }
 .btn-primary { background:var(--blue); color: var(--white); }
 .btn-primary:hover { background:var(--blue-light); transform:translateY(-2px); }
 .btn-outline { border:2px solid var(--blue); color:var(--blue); background:transparent; }
 .btn-outline:hover { background:var(--blue); color: var(--white); }
 
+/* Sections générales */
+section { padding: 3rem 1rem; max-width: 1100px; margin: 0 auto; }
+.section-title { text-align: center; font-size: 2rem; color: var(--blue); margin-bottom: 2rem; }
+
 /* About */
-.about-text { max-width:800px; margin:auto; line-height:1.7; display:flex; flex-wrap:wrap; align-items:flex-start; gap:1.5rem; text-align:justify; }
-.about-text img { width:150px; height:150px; border-radius:50%; object-fit:cover; box-shadow:var(--card-shadow); flex-shrink:0; }
+.about-content { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2rem; }
+.about-img { flex: 0 0 150px; }
+.about-img img { width:100%; height: auto; border-radius:50%; object-fit:cover; box-shadow:var(--card-shadow); }
+.about-text { flex: 1; min-width: 300px; }
 
 /* Skills */
 .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap: var(--gap); margin-top:2rem; }
-.skill-card { background: var(--white); padding:1rem; border-radius:var(--radius); text-align:center; box-shadow:var(--card-shadow); transition:0.3s; opacity:0; transform: translateY(40px); }
+.skill-card { background: var(--white); padding:1.5rem 1rem; border-radius:var(--radius); text-align:center; box-shadow:var(--card-shadow); transition:0.3s; opacity:0; transform: translateY(40px); }
+.skill-card:hover { transform: translateY(-5px); }
 .skill-card.active { opacity:1; transform: translateY(0); transition: all 0.8s ease-out; }
 
 /* Works */
-.works-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap: var(--gap); margin-top:2rem; }
-.work-card { background: var(--white); padding:1rem; border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; transition:0.3s; opacity:0; transform: translateY(40px); }
+.works-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap: var(--gap); margin-top:2rem; }
+.work-card { background: var(--white); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; transition:0.3s; opacity:0; transform: translateY(40px); }
+.work-card-inner { padding: 1.5rem; }
 .work-card.active { opacity:1; transform: translateY(0); transition: all 0.8s ease-out; }
-.work-card img { width:100%; border-radius:0.5rem; margin-bottom:0.75rem; transition:0.3s; }
+.work-card img { width:100%; height: 200px; object-fit: cover; border-radius:0.5rem 0.5rem 0 0; transition:0.3s; }
 .work-card:hover img { transform:scale(1.05); }
+.work-card h3 { margin: 0.5rem 0; color: var(--blue); }
+.work-card p { margin: 0; }
 
 /* Contact */
 .contact-card { background: var(--white); max-width:800px; margin:auto; border-radius:var(--radius); padding:2rem; box-shadow:var(--card-shadow); text-align:center; }
 .contact-card form { display:grid; gap:1rem; margin-top:1.5rem; }
-.contact-card input, .contact-card textarea { padding:0.75rem; border:1px solid var(--gray); border-radius:var(--radius); }
-.contact-card button { background: var(--blue); color: var(--white); border:none; padding:0.75rem; border-radius:var(--radius); transition:0.3s; }
+.contact-card input, .contact-card textarea { padding:0.75rem; border:1px solid #ddd; border-radius:var(--radius); font-family: inherit; font-size: 1rem; }
+.contact-card button { background: var(--blue); color: var(--white); border:none; padding:0.75rem; border-radius:var(--radius); transition:0.3s; cursor: pointer; font-weight: 600; }
 .contact-card button:hover { background: var(--blue-light); }
 
-.contact-links { margin-top:1.5rem; }
+.contact-links { margin-top:1.5rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+.contact-links a { color: var(--blue); font-weight: 600; }
 
 footer { background: var(--blue); color: var(--white); text-align:center; padding:1.25rem; font-size:0.9rem; margin-top:2rem; }
 
-@media(min-width:768px){ 
-  .hero { grid-template-columns:1fr 1fr; }
+/* Media Queries */
+@media (max-width: 768px) {
+  /* Navigation mobile */
+  .menu-toggle { display: flex; }
+  .nav-links { 
+    position: fixed; 
+    top: 70px; 
+    right: -100%; 
+    background: var(--white); 
+    width: 80%; 
+    height: calc(100vh - 70px);
+    flex-direction: column; 
+    padding: 2rem; 
+    box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+  }
+  .nav-links.active { right: 0; }
+  .nav-links a { margin: 1rem 0; font-size: 1.2rem; }
+  
+  /* Hero */
+  .hero-text h1 { font-size: 1.8rem; }
+  .hero-text p { font-size: 1rem; }
+  
+  /* About */
+  .about-content { flex-direction: column; align-items: center; text-align: center; }
+  .about-img { margin-bottom: 1rem; }
+  
+  /* Skills */
+  .skills-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+  
+  /* Works */
+  .works-grid { grid-template-columns: 1fr; }
+  
+  /* Contact */
+  .contact-card { padding: 1.5rem; }
 }
 
-@media(max-width:768px){
-  .about-text { flex-direction:column; text-align:justify; }
-  .about-text img { margin:auto; }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-text h1 { font-size: 2rem; }
+  .works-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+}
+
+@media (min-width: 1025px) {
+  .hero { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
@@ -108,6 +161,11 @@ footer { background: var(--blue); color: var(--white); text-align:center; paddin
     <div class="nav-logo">
       <h1>Bachir Dramé</h1>
     </div>
+    <button class="menu-toggle" aria-label="Ouvrir le menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <div class="nav-links">
       <a href="#about">À propos de Bachir</a>
       <a href="#skills">Compétences clés</a>
@@ -132,13 +190,17 @@ footer { background: var(--blue); color: var(--white); text-align:center; paddin
 <!-- About Section -->
 <section id="about">
   <h2 class="section-title">À propos de Bachir Dramé</h2>
-  <div class="about-text">
-    <img src="maphoto.jpg" alt="Portrait professionnel de Bachir Dramé">
-    <p>
-      Étudiant en Licence 3 Communication à l’Université Gaston Berger, passionné par la création de contenus visuels et la stratégie digitale. Expérimenté en radio, infographie, montage audiovisuel et gestion de campagnes, je transforme les idées en projets concrets.<br><br>
-      Curieux et rigoureux, je développe des solutions créatives pour captiver, inspirer et mobiliser les audiences. Mon objectif est d’allier esthétique, innovation et efficacité dans chaque projet.<br><br>
-      En parallèle, je teste les tendances numériques et le storytelling pour créer des expériences immersives. Enthousiaste et polyvalent, je collabore avec des équipes dynamiques pour faire grandir les projets.
-    </p>
+  <div class="about-content">
+    <div class="about-img">
+      <img src="maphoto.jpg" alt="Portrait professionnel de Bachir Dramé">
+    </div>
+    <div class="about-text">
+      <p>
+        Étudiant en Licence 3 Communication à l'Université Gaston Berger, passionné par la création de contenus visuels et la stratégie digitale. Expérimenté en radio, infographie, montage audiovisuel et gestion de campagnes, je transforme les idées en projets concrets.<br><br>
+        Curieux et rigoureux, je développe des solutions créatives pour captiver, inspirer et mobiliser les audiences. Mon objectif est d'allier esthétique, innovation et efficacité dans chaque projet.<br><br>
+        En parallèle, je teste les tendances numériques et le storytelling pour créer des expériences immersives. Enthousiaste et polyvalent, je collabore avec des équipes dynamiques pour faire grandir les projets.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -161,18 +223,24 @@ footer { background: var(--blue); color: var(--white); text-align:center; paddin
   <div class="works-grid">
     <div class="work-card">
       <img src="work1.jpg" alt="Projet 1 – Communication digitale">
-      <h3>Projet 1</h3>
-      <p>Objectifs, actions et résultats du projet 1 en communication et stratégie digitale.</p>
+      <div class="work-card-inner">
+        <h3>Projet 1</h3>
+        <p>Objectifs, actions et résultats du projet 1 en communication et stratégie digitale.</p>
+      </div>
     </div>
     <div class="work-card">
       <img src="work2.jpg" alt="Projet 2 – Stratégie digitale">
-      <h3>Projet 2</h3>
-      <p>Détails du projet 2, ses enjeux et son impact sur la stratégie digitale.</p>
+      <div class="work-card-inner">
+        <h3>Projet 2</h3>
+        <p>Détails du projet 2, ses enjeux et son impact sur la stratégie digitale.</p>
+      </div>
     </div>
     <div class="work-card">
       <img src="work3.jpg" alt="Projet 3 – Storytelling">
-      <h3>Projet 3</h3>
-      <p>Résumé du projet 3 et ses résultats mesurables en storytelling et communication.</p>
+      <div class="work-card-inner">
+        <h3>Projet 3</h3>
+        <p>Résumé du projet 3 et ses résultats mesurables en storytelling et communication.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -187,10 +255,10 @@ footer { background: var(--blue); color: var(--white); text-align:center; paddin
       <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
       <button type="submit">Envoyer</button>
     </form>
-    <p class="contact-links">
-      <a href="cv.pdf" download>Télécharger mon CV</a> · 
+    <div class="contact-links">
+      <a href="cv.pdf" download>Télécharger mon CV</a>
       <a href="https://www.linkedin.com/in/bachir-drame-86a316306" target="_blank">LinkedIn</a>
-    </p>
+    </div>
   </div>
 </section>
 
@@ -199,6 +267,23 @@ footer { background: var(--blue); color: var(--white); text-align:center; paddin
 </footer>
 
 <script>
+// Menu mobile
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  menuToggle.classList.toggle('active');
+});
+
+// Fermer le menu en cliquant sur un lien
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    menuToggle.classList.remove('active');
+  });
+});
+
 // Animations slide-in + fade-in
 const animateCards = document.querySelectorAll('.skill-card, .work-card');
 const observer = new IntersectionObserver(entries => {
@@ -207,16 +292,16 @@ const observer = new IntersectionObserver(entries => {
       entry.target.classList.add('active');
     }
   });
-}, { threshold: 0.3 });
+}, { threshold: 0.2 });
 animateCards.forEach(card => observer.observe(card));
 
 // Menu actif
 const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-links a');
+const navLinkItems = document.querySelectorAll('.nav-links a');
 const menuObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
-      navLinks.forEach(link => link.classList.remove('active'));
+      navLinkItems.forEach(link => link.classList.remove('active'));
       const id = entry.target.getAttribute('id');
       const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
       if(activeLink) activeLink.classList.add('active');
